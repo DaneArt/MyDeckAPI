@@ -103,6 +103,7 @@ namespace MyDeckAPI
             services.AddTransient<MailService>();
             services.AddTransient<ContentSaver>();
             services.AddTransient<AuthUtils>();
+            services.AddTransient<GetDecksForTrainUseCase>();
             services.AddTransient<GetNewTokensUseCase>();
             services.AddTransient<RefreshTokensUseCase>();
             services.AddTransient<UpdateDeckUseCase>();

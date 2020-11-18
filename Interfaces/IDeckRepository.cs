@@ -12,6 +12,8 @@ namespace MyDeckApi_Experimental.Interfaces
         void Update(Deck deck);
         Task<List<Deck>> FindAll();
         UserModelDeck FindById(Guid Id);
+        Deck FindStaticById(Guid Id);
+        List<Deck> FindDecksForQuickTrain(Guid userId);
         void Save();
         Task<List<Deck>> AllCurrentUserDecks(string login);
         Task<List<Deck>> AllCurrentUserDecksWithCards(string login);

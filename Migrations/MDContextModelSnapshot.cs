@@ -70,37 +70,37 @@ namespace MyDeckAPI.Migrations
                         new
                         {
                             Category_Name = "Math",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(6171),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(605),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Foreign Languages",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(7435),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2024),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Chemistry",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(7468),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2056),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Art",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(7470),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2059),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "IT",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(7472),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2061),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Others",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 975, DateTimeKind.Utc).AddTicks(7474),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2062),
                             Tag = ""
                         });
                 });
@@ -115,7 +115,7 @@ namespace MyDeckAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("AvailableQuickTrain")
+                    b.Property<bool>("Available_Quick_Train")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
@@ -135,7 +135,7 @@ namespace MyDeckAPI.Migrations
                     b.Property<Guid>("Icon")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsPrivate")
+                    b.Property<bool>("Is_Private")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastUpdate")
@@ -149,6 +149,9 @@ namespace MyDeckAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("");
+
+                    b.Property<int>("XP")
+                        .HasColumnType("int");
 
                     b.HasKey("Deck_Id");
 
@@ -210,31 +213,31 @@ namespace MyDeckAPI.Migrations
                         new
                         {
                             Role_Name = "Owner",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 979, DateTimeKind.Utc).AddTicks(9605),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(5690),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Administrator",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 980, DateTimeKind.Utc).AddTicks(433),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6686),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Support",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 980, DateTimeKind.Utc).AddTicks(461),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6721),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Content Maker",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 980, DateTimeKind.Utc).AddTicks(462),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6724),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "User",
-                            LastUpdate = new DateTime(2020, 10, 17, 13, 29, 31, 980, DateTimeKind.Utc).AddTicks(464),
+                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6726),
                             Tag = ""
                         });
                 });
@@ -275,19 +278,10 @@ namespace MyDeckAPI.Migrations
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Last_Train")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Lvl")
-                        .HasColumnType("int");
-
                     b.Property<string>("Tag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Trains")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Wins")
+                    b.Property<int>("XP")
                         .HasColumnType("int");
 
                     b.HasKey("User_Id", "Card_Id");

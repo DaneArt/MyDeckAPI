@@ -22,14 +22,15 @@ namespace MyDeckAPI.Controllers
         private readonly ILogger<CardController> logger;
         private readonly SnakeCaseConverter snakeCaseConverter;
 
-        public CardController(ILogger<CardController> _logger, CardRepository context, SnakeCaseConverter snakeCaseConverter)
+        public CardController(ILogger<CardController> _logger, CardRepository context,
+            SnakeCaseConverter snakeCaseConverter)
         {
             db = context;
             logger = _logger;
             this.snakeCaseConverter = snakeCaseConverter;
         }
 
-        
+
         [HttpGet("[action]")]
         public async Task<IActionResult> FindAllAsync()
         {
@@ -41,7 +42,7 @@ namespace MyDeckAPI.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogWarning("------------> An error has occurred <------------ \n"+ ex.Message);
+                logger.LogWarning("------------> An error has occurred <------------ \n" + ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -66,7 +67,7 @@ namespace MyDeckAPI.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogWarning("------------> An error has occurred <------------ \n"+ ex.Message);
+                logger.LogWarning("------------> An error has occurred <------------ \n" + ex.Message);
                 return BadRequest(ex.Message);
             }
         }
@@ -90,41 +91,39 @@ namespace MyDeckAPI.Controllers
         }*/
 
 
-       /* [HttpPut("[action]")]
-        public IActionResult Update([FromBody]IEnumerable<FilledCard> value)
-        {
-            try
-            {
-                //var content = db.Update(value);
-                var content = 1;
-                db.Save();
-                logger.LogInformation("------------> Card/s have been updated <------------");
-                return Ok(content);
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning("------------> An error has occurred <------------ \n"+ ex.Message);
-                return BadRequest(ex.Message);
-            }
-        }*/
+        /* [HttpPut("[action]")]
+         public IActionResult Update([FromBody]IEnumerable<FilledCard> value)
+         {
+             try
+             {
+                 //var content = db.Update(value);
+                 var content = 1;
+                 db.Save();
+                 logger.LogInformation("------------> Card/s have been updated <------------");
+                 return Ok(content);
+             }
+             catch (Exception ex)
+             {
+                 logger.LogWarning("------------> An error has occurred <------------ \n"+ ex.Message);
+                 return BadRequest(ex.Message);
+             }
+         }*/
 
         [AllowAnonymous]
         [HttpDelete("[action]")]
-        public async Task<IActionResult> DeleteAsync([FromBody]IEnumerable<Card> value)
+        public IActionResult Delete([FromBody] IEnumerable<Card> value)
         {
             try
-            {               
-                    await db.Delete(value);
-                    logger.LogInformation("------------> Card have been deleted <------------");
-                    return Ok();
-             
+            {
+                db.Delete(value);
+                logger.LogInformation("------------> Card have been deleted <------------");
+                return Ok();
             }
             catch (Exception ex)
             {
-                logger.LogWarning("------------> An error has occurred <------------ \n"+ ex.Message);
+                logger.LogWarning("------------> An error has occurred <------------ \n" + ex.Message);
                 return BadRequest(ex.Message);
             }
         }
-        
     }
 }

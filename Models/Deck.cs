@@ -18,9 +18,9 @@ namespace MyDeckAPI.Models
         [Required(AllowEmptyStrings = true)]
         public string Description { get; set; }
         [Required]
-        public bool IsPrivate { get; set; }
+        public bool Is_Private { get; set; }
         [Required]
-        public bool AvailableQuickTrain { get; set; }
+        public bool Available_Quick_Train { get; set; }
         [Required]
         public Guid Icon { get; set; }
         [Required]
@@ -29,6 +29,7 @@ namespace MyDeckAPI.Models
         [Required]
         public string Author { get; set; }
         public File _Icon { get; set; }
+        public int XP { get; set; }
         public ICollection<UserDeck> UserDecks { get; set; }
         public ICollection<Card> Cards { get; set; }
         public Deck() : base()

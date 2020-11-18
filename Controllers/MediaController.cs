@@ -41,8 +41,10 @@ namespace MyDeckAPI.Controllers
                 var currentDirectory = Directory.GetCurrentDirectory();
                 var dataPath = Path.GetDirectoryName(currentDirectory);
                 var fileMeta = await fileRepository.GetFileById(id);
-                var imageFileStream = System.IO.File.OpenRead(dataPath + @"/UsersData/" + fileMeta.Path+ id.ToString() + ".jpg");
-                return File(imageFileStream, "image/jpeg");
+                var extension = fileMeta.Type == "text" ? ".txt" : ".jpg";
+                var contentType = fileMeta.Type == "text" ? "text/plain" : "image/jpeg";
+                var fileStream = System.IO.File.OpenRead(dataPath + @"/UsersData/" + fileMeta.Path+ id.ToString()+extension);
+                return File(fileStream, contentType);
             }
             catch (Exception ex)
             {

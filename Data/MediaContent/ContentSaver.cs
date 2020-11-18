@@ -26,27 +26,16 @@ namespace MyDeckAPI.Data.MediaContent
             var dataPath = Path.GetDirectoryName(currentDirectory);
 
             String md5Path = authOptions.GetMd5HashString(file.FileName.Split(".")[0]);
-
-            StringBuilder pathBuilder = new StringBuilder();
-
-
-            for (int i = 0; i < md5Path.Length; i++)
-            {
-                pathBuilder.Append(md5Path[i]);
-                if (i % 2 == 0)
-                {
-                    pathBuilder.Append("/");
-                }
-            }
-            Directory.CreateDirectory(dataPath + @"/UsersData/" + pathBuilder.ToString());
+            String path = authOptions.GetFilePathFromMD5(md5Path);
+            Directory.CreateDirectory(dataPath + @"/UsersData/" + path.ToString());
             
 
-            using (var stream = File.Create(dataPath + @"/UsersData/" + pathBuilder.ToString()+  file.FileName))
+            using (var stream = File.Create(dataPath + @"/UsersData/" + path.ToString()+  file.FileName))
             {
                 await file.CopyToAsync(stream);
             }
 
-            return pathBuilder.ToString();
+            return path;
 
         }
         public virtual async Task<string> Save(IFormFile file, string path)

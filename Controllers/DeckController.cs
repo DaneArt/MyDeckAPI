@@ -26,10 +26,11 @@ namespace MyDeckAPI.Controllers
         private readonly ILogger<DeckController> logger;
         private readonly DeleteDeckUseCase deleteDeckUseCase;
         private readonly UpdateDeckUseCase updateDeckUseCase;
+        private readonly GetDecksForTrainUseCase getDecksForTrainUseCase;
         private readonly SnakeCaseConverter snakeCaseConverter;
 
         public DeckController(IDeckRepository deckRepository, IUserDeckRepository userDeckRepository,
-            ILogger<DeckController> logger, SnakeCaseConverter snakeCaseConverter, DeleteDeckUseCase deleteDeckUseCase, UpdateDeckUseCase updateDeckUseCase)
+            ILogger<DeckController> logger, SnakeCaseConverter snakeCaseConverter, DeleteDeckUseCase deleteDeckUseCase, UpdateDeckUseCase updateDeckUseCase, GetDecksForTrainUseCase getDecksForTrainUseCase)
         {
             this.deckRepository = deckRepository;
             this.userDeckRepository = userDeckRepository;
@@ -37,6 +38,7 @@ namespace MyDeckAPI.Controllers
             this.snakeCaseConverter = snakeCaseConverter;
             this.deleteDeckUseCase = deleteDeckUseCase;
             this.updateDeckUseCase = updateDeckUseCase;
+            this.getDecksForTrainUseCase = getDecksForTrainUseCase;
         }
 
         [HttpGet("[action]")]
@@ -136,14 +138,30 @@ namespace MyDeckAPI.Controllers
         public async Task<IActionResult> Update([FromBody] System.Text.Json.JsonElement value)
         {
             Deck deck = JsonConvert.DeserializeObject<Deck>(value.GetRawText());
-            var content = await updateDeckUseCase.Invoke(new UpdateDeckParams(deck));
-
-            if (content == 1)
+            logger.LogInformation("------------> Deck have been converted <------------");
+             var content = await updateDeckUseCase.Invoke(new UpdateDeckParams(deck));
+            logger.LogInformation($@"------------>UDeckUseCase returned result: {content} <------------");
+            if (content == 0)
             {
                 logger.LogInformation("------------> Deck/s have been updated <------------");
                 return Ok();
             }
             else
+            {
+                logger.LogInformation("------------> Deck have not been updated <------------");
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("[action]/{userId}")]
+        public async Task<IActionResult> FindDecksForTrain(string userId)
+        {
+            try
+            {
+                var decks = await getDecksForTrainUseCase.Invoke(new GetDecksForTrainParams(Guid.Parse(userId)));
+                return Ok(decks);
+            }
+            catch (Exception e)
             {
                 return BadRequest();
             }

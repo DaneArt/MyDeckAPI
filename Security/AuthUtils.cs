@@ -58,6 +58,25 @@ namespace MyDeckAPI.Security
             return sb.ToString();
         }
 
+        public string GetFilePathFromMD5(string md5Path)
+        {
+            
+            StringBuilder pathBuilder = new StringBuilder();
+
+
+            for (int i = 0; i < md5Path.Length; i++)
+            {
+                pathBuilder.Append(md5Path[i]);
+                if (i % 2 == 0)
+                {
+                    pathBuilder.Append("/");
+                }
+            }
+
+            return pathBuilder.ToString();
+
+        }
+
         public bool validatePassword(byte[] userPassword, byte[] dbPassword)
         {
             var passHash = dbPassword.Take(32).ToArray();

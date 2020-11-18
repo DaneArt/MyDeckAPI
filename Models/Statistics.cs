@@ -8,17 +8,14 @@ namespace MyDeckAPI.Models
 {
     public class Statistics : ModelPart
     {
+        [Required]
         public Guid User_Id { get; set; }
+        [Required]
         public Guid Card_Id { get; set; }
-
+        
         [Required]
-        public int Wins { get; set; }
-        [Required]
-        public int Trains { get; set; }
-        [Required]
-        public int Lvl { get; set; }
-        [Required]
-        public DateTime Last_Train { get; set; }
+        public int XP { get; set; }
+        
         public User User { get; set; }
         public Card Card { get; set; }
         public Statistics() : base()

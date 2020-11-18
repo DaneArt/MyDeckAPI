@@ -75,7 +75,7 @@ namespace MyDeckAPI.Models
             modelBuilder.Entity<Deck>()
                         .Property(d => d.Description)
                         .HasDefaultValue("");
-            modelBuilder.Entity<Deck>().Property(d => d.AvailableQuickTrain).HasDefaultValue(true);
+            modelBuilder.Entity<Deck>().Property(d => d.Available_Quick_Train).HasDefaultValue(true);
 
             modelBuilder.Entity<Card>()
                        .HasOne(d => d.Parent_Deck)

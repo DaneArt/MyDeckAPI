@@ -38,9 +38,9 @@ namespace MyDeckAPI.Models
                 Deck_Id = this.Deck_Id,
                 Title = this.Title,
                 Description = this.Description,
-                IsPrivate = this.IsPrivate,
+                Is_Private = this.IsPrivate,
                 Icon = this.Icon,
-                AvailableQuickTrain = this.AvailableQuickTrain,
+                Available_Quick_Train = this.AvailableQuickTrain,
                 Category_Name = this.Category_Name,
                 Author = this.Author,
                 Cards = Cards.Select((c) => new Card
@@ -56,9 +56,9 @@ namespace MyDeckAPI.Models
             return new FullDeckModel { 
             Deck_Id = deck.Deck_Id,
             Title = deck.Title,
-            AvailableQuickTrain = deck.AvailableQuickTrain,
+            AvailableQuickTrain = deck.Available_Quick_Train,
             Description = deck.Description,
-            IsPrivate = deck.IsPrivate,
+            IsPrivate = deck.Is_Private,
             Icon = deck.Icon,
             Category_Name = deck.Category_Name,
             Author = deck.Author,

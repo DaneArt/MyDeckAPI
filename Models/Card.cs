@@ -34,8 +34,7 @@ namespace MyDeckAPI.Models
             Card_Id != Guid.Empty &&
             Answer != null &&
             Question != null &&
-            Parent_Deck_Id != Guid.Empty &&
-            Parent_Deck_Id != null&&
+            
             Answer != Guid.Empty &&
             Question != Guid.Empty
                )
