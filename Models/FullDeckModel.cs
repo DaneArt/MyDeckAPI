@@ -26,9 +26,10 @@ namespace MyDeckAPI.Models
         [Required]
         public string Author { get; set; }
         public ICollection<FullCardModel> Cards { get; set; }
+        public ICollection<Guid> Subscribers { get; set; }
         public FullDeckModel() : base()
         {
-
+            Subscribers = new List<Guid>();
             Cards = new List<FullCardModel>();
         }
         public Deck ToDeck()
@@ -43,6 +44,11 @@ namespace MyDeckAPI.Models
                 Available_Quick_Train = this.AvailableQuickTrain,
                 Category_Name = this.Category_Name,
                 Author = this.Author,
+                UserDecks = Subscribers.Select(ud=> new UserDeck
+                {
+                    User_Id = ud,
+                    Deck_Id = this.Deck_Id
+                }).ToList(),
                 Cards = Cards.Select((c) => new Card
                 {
                     Card_Id = c.Card_Id,
@@ -62,6 +68,7 @@ namespace MyDeckAPI.Models
             Icon = deck.Icon,
             Category_Name = deck.Category_Name,
             Author = deck.Author,
+            Subscribers = deck.UserDecks.Select(ud=>ud.User_Id).ToList(),
             Cards = deck.Cards.Select((c)=> new FullCardModel { 
             Card_Id = c.Card_Id,
             Answer = new FullCardPart{ Id = c.Answer,

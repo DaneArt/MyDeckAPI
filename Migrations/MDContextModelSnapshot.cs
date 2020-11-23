@@ -70,37 +70,37 @@ namespace MyDeckAPI.Migrations
                         new
                         {
                             Category_Name = "Math",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(605),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(2468),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Foreign Languages",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2024),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(5680),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Chemistry",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2056),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(5889),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Art",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2059),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(5892),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "IT",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2061),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(5893),
                             Tag = ""
                         },
                         new
                         {
                             Category_Name = "Others",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 321, DateTimeKind.Utc).AddTicks(2062),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 151, DateTimeKind.Utc).AddTicks(5894),
                             Tag = ""
                         });
                 });
@@ -213,31 +213,31 @@ namespace MyDeckAPI.Migrations
                         new
                         {
                             Role_Name = "Owner",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(5690),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 159, DateTimeKind.Utc).AddTicks(2444),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Administrator",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6686),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 159, DateTimeKind.Utc).AddTicks(4145),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Support",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6721),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 159, DateTimeKind.Utc).AddTicks(4187),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "Content Maker",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6724),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 159, DateTimeKind.Utc).AddTicks(4188),
                             Tag = ""
                         },
                         new
                         {
                             Role_Name = "User",
-                            LastUpdate = new DateTime(2020, 11, 12, 17, 0, 52, 326, DateTimeKind.Utc).AddTicks(6726),
+                            LastUpdate = new DateTime(2020, 11, 22, 23, 12, 11, 159, DateTimeKind.Utc).AddTicks(4189),
                             Tag = ""
                         });
                 });

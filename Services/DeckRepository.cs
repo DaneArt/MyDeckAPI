@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using MyDeckAPI.Data.MediaContent;
 using MyDeckApi_Experimental.Interfaces;
@@ -41,8 +42,10 @@ namespace MyDeckAPI.Services
 
         public UserModelDeck FindById(Guid Id)
         {
-            Deck deck = _context.Decks.Where((d) => d.Deck_Id == Id).Include((d) => d.Cards).ToList()[0];
+            Deck deck = _context.Decks.Where((d) => d.Deck_Id == Id).Include((d) => d.Cards).Include((d)=>d.UserDecks).ToList()[0];
             User author = _context.Users.Find(Guid.Parse(deck.Author));
+            List<UserDeck> subs = _context.UserDecks.Where(ud => ud.Deck_Id == deck.Deck_Id).ToList();
+            deck.UserDecks = subs;
             return new UserModelDeck
             {
                 Author = new UserModel

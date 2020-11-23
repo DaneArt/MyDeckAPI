@@ -70,16 +70,20 @@ namespace MyDeckAPI.Controllers
         }
 
 
-        [HttpPost("[action]")]
-        public async Task<IActionResult> InsertAsync([FromBody] IEnumerable<UserDeck> value)
+        [HttpPost("[action]/{deckId}/{userId}")]
+        public async Task<IActionResult> Subscribe(string deckId, string userId)
         {
             try
             {
-                var content = value;
-                foreach (UserDeck usrdck in content)
+                var content = new UserDeck
                 {
-                   await db.Insert(usrdck);
-                }
+                    Deck_Id = Guid.Parse(deckId),
+                    User_Id = Guid.Parse(userId),
+                };
+                
+                   await db.Insert(content);
+                
+                   db.Save();
 
                 logger.LogInformation("------------> Userdeck/s have been added <------------");
                 return Ok();
